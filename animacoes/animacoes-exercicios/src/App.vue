@@ -7,6 +7,14 @@
     <transition name="fade">
       <b-alert variant="info" show v-if="exibir">{{ msg }}</b-alert>
     </transition>
+
+    <transition name="slide">
+      <b-alert variant="info" show v-if="exibir">{{ msg }}</b-alert>
+    </transition>
+
+    <transition enter-active-class="animated bounce" leave-active-class="animated shake">
+      <b-alert variant="info" show v-if="exibir">{{ msg }}</b-alert>
+    </transition>
   </div>
 </template>
 
@@ -32,26 +40,46 @@ export default {
   font-size: 1.5rem;
 }
 
-.fade-enter {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
-.fade-enter-active {
-  transition: 2s;
-}
-
-.fade-enter-to {
-  opacity: 1;
-}
-
-.fade_leave {
-  opacity: 1;
-}
-
+.fade-enter-active,
 .fade-leave-active {
+  transition: opacity 2s;
 }
 
-.fade-leave-to {
+@keyframes slide-in {
+  from {
+    transform: translateY(40px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+.slide-enter-active {
+  animation: slide-in 2s ease;
+  transition: opacity 2s;
+}
+
+.slide-leave-active {
+  animation: slide-out 2s ease;
+  transition: opacity 2s;
+}
+
+.slide-enter,
+.slide-leave-to {
   opacity: 0;
 }
 </style>
