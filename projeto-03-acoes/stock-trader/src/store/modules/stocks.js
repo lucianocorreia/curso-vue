@@ -10,10 +10,14 @@ export default {
         }
     },
     actions: {
-        buyStock({ commit }, order) {
-            commit()
+        buyStock({
+            commit
+        }, order) {
+            commit('buyStock', order)
         },
-        initStocks({ commit }) {
+        initStocks({
+            commit
+        }) {
             commit('setStocks', stocks)
         }
     },

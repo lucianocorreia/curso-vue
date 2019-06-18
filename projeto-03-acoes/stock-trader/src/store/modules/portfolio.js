@@ -3,8 +3,12 @@ export default {
         funds: 1000,
         stocks: []
     },
-    muations: {
-        buyStock(state, { stockId, quantity, stockPrice }) {
+    mutations: {
+        buyStock(state, {
+            stockId,
+            quantity,
+            stockPrice
+        }) {
             const record = state.stocks.find(element => element.id == stockId)
             if (record) {
                 record.quantity += quantity
@@ -16,7 +20,11 @@ export default {
             }
             state.funds -= stockPrice * quantity
         },
-        sellStock(state, { stockId, quantity, stockPrice }) {
+        sellStock(state, {
+            stockId,
+            quantity,
+            stockPrice
+        }) {
             const record = state.stocks.find(element => element.id == stockId)
             if (record.quantity > quantity) {
                 record.quantity -= quantity
@@ -27,7 +35,9 @@ export default {
         }
     },
     actions: {
-        sellStock({ commit }, order) {
+        sellStock({
+            commit
+        }, order) {
             commit('sellStock', order)
         }
     },
@@ -38,7 +48,7 @@ export default {
                 return {
                     id: stock.id,
                     quantity: stock.quantity,
-                    name = record.name,
+                    name: record.name,
                     price: record.price
                 }
             })
