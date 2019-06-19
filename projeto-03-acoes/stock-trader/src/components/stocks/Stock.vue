@@ -22,8 +22,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
     props: ['stock'],
     data() {
@@ -32,7 +30,6 @@ export default {
         }
     },
     methods: {
-        //...mapActions({ buyStockAtion: 'buyStock' }),
         buyStock() {
             const order = {
                 stockId: this.stock.id,
